@@ -1,0 +1,27 @@
+#include<stdio.h>
+#include<math.h>
+#define much 32
+#define much_float 32.0000
+
+int main(void)
+{
+	int value[much];
+	int i;
+	for(i=0;i<much;i++)
+	{  
+         if(i<=(much/4-1))  value[i]=(1.6+1.6/(much_float/4)*i)*4095/3.3;
+		 if(i>(much/4-1)&&i<=(much/4-1+much/2))   value[i]=(3.2/(much_float/2)*(i-(much/4)))*4095/3.3;
+         if(i>(much/4-1+much/2)&&i<much)   value[i]=(0+1.6/(much_float/4)*(i-(much/4-1+much/2)))*4095/3.3;//锯齿波函数
+
+       /*if(i<=(much/4-1))  value[i]=(1.6+1.6/(much_float/4)*i)*4095/3.3;
+	     if(i>(much/4-1)&&i<=(much/4-1+much/2))   value[i]=(3.2-3.2/(much_float/2)*(i-(much/4)))*4095/3.3;
+	     if(i>(much/4-1+much/2)&&i<much)   value[i]=(0+1.6/(much_float/4)*(i-(much/4-1+much/2)))*4095/3.3;*///三角波函数
+
+
+		//value[i]=((1.6*sin(i/32.00*2*3.14)+1.6)*4095/3.3);  //正弦波函数
+	}
+	for(i=0;i<much;i++)
+	{
+		printf("%d,",value[i]);
+	}
+}
